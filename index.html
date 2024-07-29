@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smoothie Machine</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Order Your Smoothie</h1>
+    <form id="smoothieForm">
+        <!-- Step 1: Customer Information -->
+        <div class="form-step" id="step1">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required><br><br>
+            <button type="button" onclick="nextStep(2)">Next</button>
+        </div>
+
+        <!-- Step 2: Size Selection -->
+        <div class="form-step" id="step2" style="display: none;">
+            <label for="size">Size:</label>
+            <select id="size" name="size" required>
+                <option value="">Select Size</option>
+                <option value="small">Small</option>
+                <option value="medium">Medium</option>
+                <option value="large">Large</option>
+            </select><br><br>
+            <button type="button" onclick="nextStep(1)">Previous</button>
+            <button type="button" onclick="nextStep(3)">Next</button>
+        </div>
+
+        <!-- Step 3: Base Selection -->
+        <div class="form-step" id="step3" style="display: none;">
+            <label for="base">Base:</label>
+            <select id="base" name="base" required>
+                <option value="">Select Base</option>
+                <option value="milk">Milk</option>
+                <option value="yogurt">Yogurt</option>
+                <option value="water">Water</option>
+                <option value="juice">Juice</option>
+            </select><br><br>
+            <button type="button" onclick="nextStep(2)">Previous</button>
+            <button type="button" onclick="nextStep(4)">Next</button>
+        </div>
+
+        <!-- Step 4: Fruit Selection -->
+        <div class="form-step" id="step4" style="display: none;">
+            <label for="fruits">Fruits:</label><br>
+            <div class="ingredient">
+                <input type="checkbox" id="strawberry" name="fruits" value="Strawberry" onchange="updateImagePreview()">
+                <label for="strawberry">Strawberry</label>
+                <img src="images/strawberry.jpg" alt="Strawberry" class="ingredient-image">
+            </div>
+            <div class="ingredient">
+                <input type="checkbox" id="banana" name="fruits" value="Banana" onchange="updateImagePreview()">
+                <label for="banana">Banana</label>
+                <img src="images/banana.jpg" alt="Banana" class="ingredient-image">
+            </div>
+            <div class="ingredient">
+                <input type="checkbox" id="mango" name="fruits" value="Mango" onchange="updateImagePreview()">
+                <label for="mango">Mango</label>
+                <img src="images/mango.jpg" alt="Mango" class="ingredient-image">
+            </div>
+            <div class="ingredient">
+                <input type="checkbox" id="blueberry" name="fruits" value="Blueberry" onchange="updateImagePreview()">
+                <label for="blueberry">Blueberry</label>
+                <img src="images/blueberry.jpg" alt="Blueberry" class="ingredient-image">
+            </div>
+            <div class="ingredient">
+                <input type="checkbox" id="pineapple" name="fruits" value="Pineapple" onchange="updateImagePreview()">
+                <label for="pineapple">Pineapple</label>
+                <img src="images/pineapple.jpg" alt="Pineapple" class="ingredient-image">
+            </div><br><br>
+            <button type="button" onclick="nextStep(3)">Previous</button>
+            <button type="button" onclick="nextStep(5)">Next</button>
+        </div>
+
+        <!-- Step 5: Additions Selection -->
+        <div class="form-step" id="step5" style="display: none;">
+            <label for="additions">Additions:</label><br>
+            <input type="checkbox" id="honey" name="additions" value="Honey">
+            <label for="honey">Honey</label><br>
+            <input type="checkbox" id="chia" name="additions" value="Chia Seeds">
+            <label for="chia">Chia Seeds</label><br>
+            <input type="checkbox" id="protein" name="additions" value="Protein Powder">
+            <label for="protein">Protein Powder</label><br><br>
+            <button type="button" onclick="nextStep(4)">Previous</button>
+            <button type="button" onclick="orderSmoothie()">Order</button>
+        </div>
+
+        <!-- Step 6: Summary -->
+        <div class="form-step" id="step6" style="display: none;">
+            <h2>Thank You!</h2>
+            <p>Your smoothie order is complete.</p>
+            <div id="smoothieDetails"></div>
+            <button type="button" onclick="nextStep(1)">Start New Order</button>
+        </div>
+    </form>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
